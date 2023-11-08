@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <FrameLayout
+        android:id="@+id/main_frm"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/main_player_cl" />
+
+    <SeekBar
+        android:id="@+id/main_miniplayer_progress_sb"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@null"
+        android:paddingEnd="0dp"
+        android:paddingStart="0dp"
+        android:layout_marginBottom="-3dp"
+        android:progressBackgroundTint="@color/song_player_bg"
+        android:progressTint="@color/song_player"
+        android:progress="0"
+        android:max="100000"
+        android:thumb="@color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/main_player_cl" />
+    <!--progressBackgroundTint, progressTint: SeekBar의 진행 상태에 따른 배경과 색상 설정
+    progress, max: SeekBar의 진행 상태를 나타내는 값과 최대 값(범위) 설정
+    thumb: 사용자가 드래그하여 값을 조절할 때 나타나는 조절 핸들(썸, Thumb) 설정
+    Thumb은 SeekBar의 특정 위치에서 사용자 입력을 받아 이동하며, 사용자가 원하는 값을 선택하도록 도와줌.
+    사용자가 값을 조절할 때 Thumb가 해당 위치로 이동하며 사용자에게 현재 값을 나타내는 역할을 합니다-->
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_player_cl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F9F9F9"
+        android:paddingVertical="5dp"
+        app:layout_constraintBottom_toTopOf="@id/main_bnv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/main_miniplayer_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="라일락"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/main_miniplayer_singer_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="아이유 (IU)"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+        <!--
+       match_parent는 상위 거랑 맞추는 거
+       wrap_content는 안에 든 내용에 맞추는 거
+       orientation = vertical 해서 제목과 가수 이름이 수직으로 나옴
+       #f9f9f9가 무슨 색이지
+       dp, sp는 뭔 단위일까
+       paddingVertical은 padding 수직으로 얼마나 넣을건지-->
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        <!--
+        top: 위젯을 윗쪽에 위치, 사이즈 변화X
+        bottom: 위젯을 하단에 위치, 사이즈 변화X
+        left: 위젯을 왼쪽에 위치, 사이즈 변화X
+        right: 위젯을 오른쪽에 위치, 사이즈 변화X
+        center_vertical: 위젯을 세로 중앙에 위치, 사이즈 변화X
+        center_horizontal: 위젯을 가로 중앙에 위치, 사이즈 변화X
+        center: 위젯을 정중앙에 위치, 사이즈 변화X
+        start: 위젯을 부모 뷰그룹의 시작점에 위치, 사이즈 변화X
+        end: 위젯을 부모 뷰그룹의 마지막에 위치, 사이즈 변화X
+        fill_vertical: 위젯의 세로를 부모 뷰그룹의 사이즈에 맞게 늘려 채움
+        fill_horizontal: 위젯의 가로를 부모 뷰그룹의 사이즈에 맞게 늘려 채움
+        fill: 위젯을 가로/세로 길이를 부모 뷰그룹의 사이즈에 맞게 늘려 채움
+        clip_vertical: 위젯의 세로 길이가 부모 뷰그룹보다 크면 넘어서는 부분은 잘라냄
+        clip_horizontal: 위젯의 가로 길이가 부모 뷰그룹 보다 크면 넘어서는 부분은 잘라냄
+        -->
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/btn_miniplayer_previous" />
+
+            <ImageView
+                android:id="@+id/main_miniplayer_btn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/btn_miniplayer_play" />
+
+            <ImageView
+                android:id="@+id/main_pause_btn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/btn_miniplay_pause"
+                android:visibility="gone" />
+            <!--invisible과 gone은 모두 안 보이지만 invisible은 공간을 차지한다-->
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/btn_miniplayer_next" />
+
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginHorizontal="15dp"
+                android:src="@drawable/btn_miniplayer_go_list" />
+            <!--gravity가 뭐지
+               orientation이랑 gravity가 같은 기능 아닌가
+               marginleft, marginend, marginhorizontal 무슨 차이지
+               horizontal은 margin 안에 이미지가 들어가고
+               left, end는 margin을 만든 후에 이미지가 옆에 붙는다-->
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--itemIconTint가 뭘까
+       labelVisibility는 뭐지-->
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/main_bnv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itemIconSize="20dp"
+        app:itemIconTint="@drawable/btm_color_selector"
+        app:itemTextColor="@drawable/btm_color_selector"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+<!--FLO는 왜 뜨는거냐고-->
